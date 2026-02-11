@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Access</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+        }
+        .container {
+            width: 500px;
+            margin: 80px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #ccc;
+            text-align: center;
+        }
+        .subscribe {
+            color: red;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        hr {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Hello {{ user.name }} 👋</h2>
+
+{% if subscription_expired %}
+    <p class="subscribe">
+        ⚠ Subscription expired on {{ user.subscription_expiry }}
+        <br>
+        Please renew to continue Prime features
+    </p>
+
+{% elif not_subscribed %}
+    <p class="subscribe">Subscribe to enjoy more features 🚀</p>
+
+{% else %}
+
+    <!-- DELIVERY -->
+    <h3>🚚 Delivery</h3>
+
+    {% if delivery_access %}
+        <p>✔ One Day Delivery Available</p>
+    {% else %}
+        <p style="color:red;">❌ No access to One Day Delivery</p>
+    {% endif %}
+
+    <!-- MOVIES ONLY IF AVAILABLE -->
+    {% if movies %}
+        <hr>
+        <h3>🎬 Movies you can access</h3>
+        <ul>
+            {% for movie in movies %}
+                <li>{{ movie }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- PRIME FEATURES ONLY IF AVAILABLE -->
+    {% if prime_features %}
+        <hr>
+        <h3>⭐ Prime Features</h3>
+        <ul>
+            {% for feature in prime_features %}
+                <li>{{ feature }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
