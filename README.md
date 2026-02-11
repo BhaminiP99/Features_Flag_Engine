@@ -1,4 +1,4 @@
-# Everest Engineering Challenge – Feature Flag Engine with Subscription Control
+# Everest Engineering Challenge – Feature Flag Engine
 
 ## Project Overview
 
